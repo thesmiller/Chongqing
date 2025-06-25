@@ -31,6 +31,37 @@
       object-fit: cover;   /* fill screen, keep aspect ratio */
       z-index: -1;         /* stay behind page content */
     }
+
+/* ==== HAMBURGER BUTTON ==== */
+#hamburger{
+  position:fixed; top:1rem; left:1rem;
+  width:2rem; height:1.5rem;
+  display:flex; flex-direction:column; justify-content:space-between;
+  background:none; border:none; cursor:pointer; z-index:1000;
+}
+#hamburger span{
+  width:100%; height:3px; background:#fff;
+  transition:transform .3s ease, opacity .3s ease; border-radius:2px;
+}
+/* morph into “X” */
+#hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+#hamburger.open span:nth-child(2){opacity:0;}
+#hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+/* ==== SLIDE-IN MENU ==== */
+nav#menu{
+  position:fixed; top:0; left:0; height:100vh; width:260px;
+  padding:5rem 1.5rem 2rem;
+  background:rgba(0,0,0,.85); backdrop-filter:blur(4px);
+  font-family:system-ui,sans-serif;
+  transform:translateX(-100%); transition:transform .3s ease; z-index:900;
+}
+nav#menu.open{transform:translateX(0);}
+nav#menu ul{list-style:none;}
+nav#menu li+li{margin-top:.8rem;}
+nav#menu a{color:#fff; text-decoration:none; font-size:1.15rem; line-height:1.4;}
+nav#menu a:hover{text-decoration:underline;}
+
     
     /* Page content wrapper */
     .content {
